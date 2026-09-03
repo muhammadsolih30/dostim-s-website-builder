@@ -10,6 +10,9 @@ import {
   Send,
   Sparkles,
   Target,
+  Timer,
+  TrendingDown,
+  Wallet,
 } from "lucide-react";
 
 import { brands, cases, packages, portraitUrl, problems } from "@/components/site/data";
@@ -196,6 +199,23 @@ function SectionTitle({
   );
 }
 
+const problemIcons: Record<string, typeof Target> = {
+  wallet: Wallet,
+  target: Target,
+  "trending-down": TrendingDown,
+  timer: Timer,
+  chart: BarChart3,
+};
+
+function ProblemIcon({ name }: { name: string }) {
+  const Icon = problemIcons[name] ?? Target;
+  return (
+    <span className="grid size-11 place-items-center rounded-xl border border-border bg-secondary text-primary transition-colors group-hover:border-primary/40">
+      <Icon className="size-5" />
+    </span>
+  );
+}
+
 function Problems() {
   return (
     <section id="muammo" className="border-t border-border/60 py-20 sm:py-28">
@@ -210,7 +230,7 @@ function Problems() {
               key={p.title}
               className="group rounded-2xl border border-border bg-card/50 p-6 transition-all hover:-translate-y-1 hover:border-primary/40 hover:bg-card"
             >
-              <span className="text-2xl">{p.icon}</span>
+              <ProblemIcon name={p.icon} />
               <h3 className="mt-4 text-lg font-semibold">{p.title}</h3>
               <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{p.text}</p>
             </div>

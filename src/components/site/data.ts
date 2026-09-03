@@ -81,27 +81,27 @@ export const brands = [
 
 export const problems = [
   {
-    icon: "💸",
+    icon: "wallet",
     title: "Reklama xarajati",
     text: "Byudjet sarflanyapti, ammo sotuv yetarli emas",
   },
   {
-    icon: "🎯",
+    icon: "target",
     title: "Noto‘g‘ri auditoriya",
     text: "Lidlar keladi, lekin xarid qilishga tayyor mijozlar kam",
   },
   {
-    icon: "📉",
+    icon: "trending-down",
     title: "Qimmat lidlar",
     text: "Har bir mijoz uchun reklamada ortiqcha pul sarflanyapti",
   },
   {
-    icon: "⏱️",
+    icon: "timer",
     title: "Javob berishdagi kechikish",
     text: "Kelgan lidlarga vaqtida javob berilmagani uchun mijozlar yo‘qoladi",
   },
   {
-    icon: "📊",
+    icon: "chart",
     title: "Nazorat yo‘q",
     text: "Reklama qayerga ketayotgani va qaysi kanal ishlayotgani ko‘rinmaydi",
   },
