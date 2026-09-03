@@ -448,37 +448,159 @@ function Packages() {
   );
 }
 
+const budgetOptions = [
+  "Standart — $200/oy",
+  "Premium — $350/oy",
+  "Vip — $500/oy",
+  "Hali aniq emas",
+];
+
 function Cta() {
+  const submit = useServerFn(submitLead);
+  const [state, setState] = useState<"idle" | "loading" | "done" | "error">("idle");
+  const [error, setError] = useState<string | null>(null);
+
+  async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    const fd = new FormData(e.currentTarget);
+    const payload = {
+      name: String(fd.get("name") ?? "").trim(),
+      phone: String(fd.get("phone") ?? "").trim(),
+      business: String(fd.get("business") ?? "").trim(),
+      budget: String(fd.get("budget") ?? "").trim(),
+    };
+    if (payload.name.length < 2 || payload.phone.length < 7) {
+      setError("Ism va telefon raqamni to‘g‘ri kiriting.");
+      return;
+    }
+    setError(null);
+    setState("loading");
+    try {
+      const res = await submit({ data: payload });
+      setState(res.ok ? "done" : "error");
+    } catch {
+      setState("error");
+    }
+  }
+
+  const inputCls =
+    "w-full rounded-xl border border-border bg-background/60 px-4 py-3 text-sm outline-none transition-colors placeholder:text-muted-foreground focus:border-primary/60";
+
   return (
     <section id="aloqa" className="scroll-mt-28 border-t border-border/60 py-20 sm:py-28">
-      <div className="mx-auto max-w-6xl px-5">
-        <div className="relative overflow-hidden rounded-[2rem] border border-primary/30 bg-hero p-8 sm:p-14">
-          <div className="pointer-events-none absolute inset-0 bg-grid opacity-30" />
-          <div className="relative max-w-2xl">
-            <h2 className="text-3xl font-bold sm:text-4xl">
-              Reklamangizni <span className="text-gold">natijaga</span> yo‘naltiramiz
-            </h2>
-            <p className="mt-4 text-muted-foreground">
-              Bepul konsultatsiyada biznesingizni tahlil qilamiz, lid narxini
-              hisoblaymiz va birinchi oy uchun strategiya tayyorlaymiz.
-            </p>
-            <div className="mt-8 flex flex-wrap gap-3">
-              <a
-                href={TELEGRAM}
-                target="_blank"
-                rel="noreferrer"
-                className="inline-flex items-center gap-2 rounded-xl bg-[image:var(--gradient-gold)] px-6 py-3.5 font-semibold text-primary-foreground shadow-[var(--shadow-glow)] transition-transform hover:scale-[1.03]"
-              >
-                <Send className="size-4" /> Telegram orqali yozish
-              </a>
-              <a
-                href="tel:+998"
-                className="inline-flex items-center gap-2 rounded-xl border border-border bg-card/60 px-6 py-3.5 font-semibold backdrop-blur transition-colors hover:bg-card"
-              >
-                <MessageCircle className="size-4" /> Qo‘ng‘iroq qilish
-              </a>
-            </div>
+      <div className="mx-auto grid max-w-6xl items-center gap-10 px-5 lg:grid-cols-2">
+        <div>
+          <p className="text-xs font-semibold tracking-[0.25em] text-primary uppercase">
+            Bepul konsultatsiya
+          </p>
+          <h2 className="mt-4 text-4xl font-bold sm:text-5xl">
+            Bepul maslahatga <span className="text-gold">yoziling</span>
+          </h2>
+          <p className="mt-5 max-w-md text-muted-foreground">
+            Ismingiz va telefon raqamingizni qoldiring. Marjona siz bilan bog‘lanib,
+            biznesingizga sifatli lid olib kelish bo‘yicha qisqa maslahat beradi.
+          </p>
+          <div className="mt-8 flex flex-wrap gap-3">
+            <a
+              href={TELEGRAM}
+              target="_blank"
+              rel="noreferrer"
+              className="inline-flex items-center gap-2 rounded-xl border border-border bg-card/60 px-5 py-3 text-sm font-semibold backdrop-blur transition-colors hover:bg-card"
+            >
+              <Send className="size-4" /> Telegram
+            </a>
+            <a
+              href={TELEGRAM}
+              target="_blank"
+              rel="noreferrer"
+              className="inline-flex items-center gap-2 rounded-xl border border-border bg-card/60 px-5 py-3 text-sm font-semibold backdrop-blur transition-colors hover:bg-card"
+            >
+              <MessageCircle className="size-4" /> Savol berish
+            </a>
           </div>
+        </div>
+
+        <div className="relative overflow-hidden rounded-[1.75rem] border border-primary/25 bg-card/70 p-6 shadow-[var(--shadow-soft)] backdrop-blur sm:p-8">
+          <div className="pointer-events-none absolute inset-0 bg-hero opacity-60" />
+          {state === "done" ? (
+            <div className="relative flex min-h-[320px] flex-col items-center justify-center text-center">
+              <span className="grid size-14 place-items-center rounded-full bg-[image:var(--gradient-gold)] text-primary-foreground">
+                <Send className="size-6" />
+              </span>
+              <h3 className="mt-5 text-2xl font-bold">Arizangiz qabul qilindi</h3>
+              <p className="mt-2 text-sm text-muted-foreground">
+                Tez orada siz bilan bog‘lanamiz. Rahmat!
+              </p>
+            </div>
+          ) : (
+            <form onSubmit={onSubmit} className="relative space-y-4">
+              <div>
+                <label htmlFor="name" className="text-sm font-semibold">
+                  Ism
+                </label>
+                <input
+                  id="name"
+                  name="name"
+                  required
+                  maxLength={100}
+                  placeholder="Masalan, Aziz"
+                  className={`mt-2 ${inputCls}`}
+                />
+              </div>
+              <div>
+                <label htmlFor="phone" className="text-sm font-semibold">
+                  Telefon raqam
+                </label>
+                <input
+                  id="phone"
+                  name="phone"
+                  type="tel"
+                  required
+                  maxLength={30}
+                  placeholder="+998 90 123 45 67"
+                  className={`mt-2 ${inputCls}`}
+                />
+              </div>
+              <div>
+                <label htmlFor="business" className="text-sm font-semibold">
+                  Biznes turi
+                </label>
+                <input
+                  id="business"
+                  name="business"
+                  maxLength={120}
+                  placeholder="Qurilish, ta’lim, B2B..."
+                  className={`mt-2 ${inputCls}`}
+                />
+              </div>
+              <div>
+                <label htmlFor="budget" className="text-sm font-semibold">
+                  Oyiga reklama uchun ajratadigan pulingiz
+                </label>
+                <select id="budget" name="budget" className={`mt-2 ${inputCls}`} defaultValue="">
+                  <option value="">Tanlang</option>
+                  {budgetOptions.map((b) => (
+                    <option key={b} value={b}>
+                      {b}
+                    </option>
+                  ))}
+                </select>
+              </div>
+              {error && <p className="text-sm text-destructive">{error}</p>}
+              {state === "error" && (
+                <p className="text-sm text-destructive">
+                  Xatolik yuz berdi. Iltimos, qayta urinib ko‘ring.
+                </p>
+              )}
+              <button
+                type="submit"
+                disabled={state === "loading"}
+                className="w-full rounded-xl bg-[image:var(--gradient-gold)] px-6 py-3.5 font-semibold text-primary-foreground shadow-[var(--shadow-glow)] transition-transform hover:scale-[1.01] disabled:opacity-60"
+              >
+                {state === "loading" ? "Yuborilmoqda..." : "Ro‘yxatdan o‘tish"}
+              </button>
+            </form>
+          )}
         </div>
       </div>
     </section>
