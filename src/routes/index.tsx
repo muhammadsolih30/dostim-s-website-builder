@@ -218,7 +218,7 @@ function ProblemIcon({ name }: { name: string }) {
 
 function Problems() {
   return (
-    <section id="muammo" className="border-t border-border/60 py-20 sm:py-28">
+    <section id="muammo" className="scroll-mt-28 border-t border-border/60 py-20 sm:py-28">
       <div className="mx-auto max-w-6xl px-5">
         <SectionTitle
           eyebrow="Muammo"
@@ -257,7 +257,7 @@ function Problems() {
 
 function Results() {
   return (
-    <section id="natijalar" className="relative border-t border-border/60 py-20 sm:py-28">
+    <section id="natijalar" className="scroll-mt-28 relative border-t border-border/60 py-20 sm:py-28">
       <div className="mx-auto max-w-6xl px-5">
         <div className="flex flex-wrap items-end justify-between gap-6">
           <SectionTitle
@@ -319,7 +319,7 @@ function Results() {
 
 function About() {
   return (
-    <section id="men-haqimda" className="border-t border-border/60 py-20 sm:py-28">
+    <section id="men-haqimda" className="scroll-mt-28 border-t border-border/60 py-20 sm:py-28">
       <div className="mx-auto grid max-w-6xl items-center gap-12 px-5 lg:grid-cols-[0.85fr_1fr]">
         <div className="relative">
           <div className="absolute -inset-4 rounded-[2rem] bg-[image:var(--gradient-gold)] opacity-20 blur-2xl" />
@@ -327,7 +327,7 @@ function About() {
             src={portraitUrl}
             alt="Marjona Rabbimova — targetolog"
             loading="lazy"
-            className="relative aspect-[4/5] w-full rounded-[1.75rem] border border-border object-cover object-top"
+            className="relative aspect-[4/5] w-full rounded-[1.75rem] border border-border object-cover object-[50%_30%]"
           />
         </div>
         <div>
@@ -365,7 +365,7 @@ function About() {
 function Brands() {
   const row = [...brands, ...brands];
   return (
-    <section id="brendlar" className="border-t border-border/60 py-20 sm:py-24">
+    <section id="brendlar" className="scroll-mt-28 border-t border-border/60 py-20 sm:py-24">
       <div className="mx-auto max-w-6xl px-5">
         <SectionTitle eyebrow="Brendlar" title="Men ishlagan brendlar" />
       </div>
@@ -392,7 +392,7 @@ function Brands() {
 
 function Packages() {
   return (
-    <section id="paketlar" className="border-t border-border/60 py-20 sm:py-28">
+    <section id="paketlar" className="scroll-mt-28 border-t border-border/60 py-20 sm:py-28">
       <div className="mx-auto max-w-6xl px-5">
         <SectionTitle
           eyebrow="Paketlar"
@@ -450,7 +450,7 @@ function Packages() {
 
 function Cta() {
   return (
-    <section id="aloqa" className="border-t border-border/60 py-20 sm:py-28">
+    <section id="aloqa" className="scroll-mt-28 border-t border-border/60 py-20 sm:py-28">
       <div className="mx-auto max-w-6xl px-5">
         <div className="relative overflow-hidden rounded-[2rem] border border-primary/30 bg-hero p-8 sm:p-14">
           <div className="pointer-events-none absolute inset-0 bg-grid opacity-30" />
