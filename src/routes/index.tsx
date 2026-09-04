@@ -15,7 +15,10 @@ import {
   Wallet,
 } from "lucide-react";
 
+import { useServerFn } from "@tanstack/react-start";
+
 import { brands, cases, packages, portraitUrl, problems } from "@/components/site/data";
+import { submitLead } from "@/lib/leads.functions";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -37,7 +40,7 @@ export const Route = createFileRoute("/")({
   component: Home,
 });
 
-const TELEGRAM = "https://t.me/";
+const TELEGRAM = "https://t.me/Rabbimova7";
 
 const nav = [
   { label: "Muammo", href: "#muammo" },
