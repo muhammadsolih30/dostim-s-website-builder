@@ -1,14 +1,13 @@
-import brand1 from "@/assets/brand-1.jpg.asset.json";
-import brand2 from "@/assets/brand-2.jpg.asset.json";
-import brand3 from "@/assets/brand-3.jpg.asset.json";
-import brand4 from "@/assets/brand-4.jpg.asset.json";
-import brand5 from "@/assets/brand-5.jpg.asset.json";
-import brand6 from "@/assets/brand-6.jpg.asset.json";
-import brand7 from "@/assets/brand-7.jpg.asset.json";
-import brand8 from "@/assets/brand-8.jpg.asset.json";
-import portrait from "@/assets/marjona.jpg.asset.json";
+export const portraitUrl = "/photo_2026-08-28_20-45-07.jpg";
 
-export const portraitUrl = portrait.url;
+const brand1 = "/sayt%20uchun%201.jpg";
+const brand2 = "/sayt%20uchun%202.jpg";
+const brand3 = "/sayt%20uchun%203.jpg";
+const brand4 = "/sayt%20uchun%204.jpg";
+const brand5 = "/sayt%20uchun%205.jpg";
+const brand6 = "/sayt%20uchun%206.jpg";
+const brand7 = "/sayt%20uchun%207.jpg";
+const brand8 = "/sayt%20uchun%208.jpg";
 
 export type CaseStudy = {
   name: string;
@@ -24,7 +23,7 @@ export const cases: CaseStudy[] = [
   {
     name: "Jahon House",
     sphere: "Qurilish",
-    logo: brand3.url,
+    logo: brand3,
     leads: "23,002",
     budget: "$23,002",
     cpl: "$1.45",
@@ -33,7 +32,7 @@ export const cases: CaseStudy[] = [
   {
     name: "Obod Makon",
     sphere: "Qurilish",
-    logo: brand1.url,
+    logo: brand1,
     leads: "7,042",
     budget: "$9,167.24",
     cpl: "$1.30",
@@ -42,7 +41,7 @@ export const cases: CaseStudy[] = [
   {
     name: "Milliy Makon",
     sphere: "Qurilish",
-    logo: brand2.url,
+    logo: brand2,
     leads: "6,163",
     budget: "$9,445.75",
     cpl: "$1.53",
@@ -51,7 +50,7 @@ export const cases: CaseStudy[] = [
   {
     name: "Bodor",
     sphere: "B2B",
-    logo: brand6.url,
+    logo: brand6,
     leads: "1,393",
     budget: "$4,614.82",
     cpl: "$3.31",
@@ -60,7 +59,7 @@ export const cases: CaseStudy[] = [
   {
     name: "Ulug' House residence",
     sphere: "Qurilish",
-    logo: brand5.url,
+    logo: brand5,
     leads: "686",
     budget: "$1,085.91",
     cpl: "$1.58",
@@ -69,14 +68,14 @@ export const cases: CaseStudy[] = [
 ];
 
 export const brands = [
-  { name: "Obod Makon", logo: brand1.url },
-  { name: "Milliy Makon", logo: brand2.url },
-  { name: "Jahon House", logo: brand3.url },
-  { name: "Global Avenue", logo: brand4.url },
-  { name: "Ulug' House", logo: brand5.url },
-  { name: "Bodor", logo: brand6.url },
-  { name: "Dahan Crane", logo: brand7.url },
-  { name: "Muhammadali Academy", logo: brand8.url },
+  { name: "Obod Makon", logo: brand1 },
+  { name: "Milliy Makon", logo: brand2 },
+  { name: "Jahon House", logo: brand3 },
+  { name: "Global Avenue", logo: brand4 },
+  { name: "Ulug' House", logo: brand5 },
+  { name: "Bodor", logo: brand6 },
+  { name: "Dahan Crane", logo: brand7 },
+  { name: "Muhammadali Academy", logo: brand8 },
 ];
 
 export const problems = [
