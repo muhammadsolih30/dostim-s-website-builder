@@ -37,7 +37,7 @@ export const Route = createFileRoute("/")({
   component: Home,
 });
 
-const TELEGRAM = "https://t.me/";
+const TELEGRAM = "https://t.me/Rabbimova7";
 
 const nav = [
   { label: "Muammo", href: "#muammo" },
